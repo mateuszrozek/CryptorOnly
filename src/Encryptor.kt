@@ -9,10 +9,7 @@ class Encryptor(var file: String, var validatedKey: String) {
 
 //    val rawText: String = file.readText(Charset.defaultCharset())
 
-    fun encrypt(){
-        System.out.println("ENCRYPTED SUCCESSFULLY")
-
-
+    fun encrypt(): String{
 
         val processedKey = Matrix(NUMBER_OF_COLUMNS, NUMBER_OF_KEY_ROWS, validatedKey)
         val processedBlock = Matrix(NUMBER_OF_COLUMNS, NUMBER_OF_BLOCK_ROWS, file)
@@ -40,7 +37,7 @@ class Encryptor(var file: String, var validatedKey: String) {
         println("Summarised block and key")
         printIntArray(summarisedBlock)
 
-        val permutedBlock = permute(block)
+        val permutedBlock = permuteBlock(block)
         println("Permutated block")
         printIntArray(permutedBlock)
 
@@ -54,7 +51,12 @@ class Encryptor(var file: String, var validatedKey: String) {
 
         val blockAsString = flattenBlock(translatedBlock)
         println("Block as list")
-        print(blockAsString)
+        println(blockAsString)
+        println()
+        println()
+
+
+        return blockAsString
     }
 
 
@@ -87,7 +89,7 @@ class Encryptor(var file: String, var validatedKey: String) {
         }
     }
 
-    private fun permute(block: Array<Array<Int>>): Array<Array<Int>> {
+    private fun permuteBlock(block: Array<Array<Int>>): Array<Array<Int>> {
 
         for (i in 0..block.size-1){
             val temp1 = block[i][1]

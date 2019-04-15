@@ -16,6 +16,7 @@ class Matrix constructor(columns: Int, rows: Int, text: String){
     }
 
 
+
     fun convertToASCII(array: Array<Array<Char>>): Array<Array<Int>> {
         val arrayASCII = Array(array.size, {Array(array[0].size, {0})})
 

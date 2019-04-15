@@ -10,8 +10,17 @@ class Main {
 
             val text = "Ptaki lataja kluczem.333"
             val key = "Tajemny "
-            val cryptor = Encryptor(text, key)
-            cryptor.encrypt()
+            val encryptor = Encryptor(text, key)
+            val encryptedText = encryptor.encrypt()
+
+            println("ENCRYPTED TEXT------------------------------")
+            println(encryptedText)
+            println()
+            println()
+            println()
+
+            val decryptor = Decryptor(encryptedText, key)
+            val decryptedText = decryptor.decrypt()
         }
     }
 }
